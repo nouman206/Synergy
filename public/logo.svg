@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none">
+  <!-- Two overlapping circles representing connection/synergy -->
+  <circle cx="18" cy="24" r="14" stroke="#0d9488" stroke-width="3" fill="none" opacity="0.7"/>
+  <circle cx="30" cy="24" r="14" stroke="#0d9488" stroke-width="3" fill="none" opacity="0.7"/>
+  <!-- Overlapping leaf/heart shape in center -->
+  <path d="M24 14 C20 18, 16 22, 24 30 C32 22, 28 18, 24 14Z" fill="#0d9488" opacity="0.9"/>
+  <!-- Text -->
+  <text x="52" y="32" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" fill="#0f766e" letter-spacing="-0.5">Synergy</text>
+</svg>
