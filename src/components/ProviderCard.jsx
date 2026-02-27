@@ -38,7 +38,15 @@ export default function ProviderCard({ provider }) {
       </div>
 
       <div className="px-5 py-3 bg-gray-50 flex items-center justify-between border-t border-gray-100">
-        <span className="text-xs text-gray-400">{provider.languages.join(", ")}</span>
+        <div className="flex items-center gap-2 text-xs text-gray-400">
+          <span>{provider.languages.join(", ")}</span>
+          {provider.ageRange && (
+            <>
+              <span className="text-gray-200">|</span>
+              <span>Ages {provider.ageRange.min}–{provider.ageRange.max}</span>
+            </>
+          )}
+        </div>
         <span className="text-sm font-bold text-primary-700 group-hover:text-primary-800 flex items-center gap-1 transition-colors">
           View Profile
           <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

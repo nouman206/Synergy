@@ -1,13 +1,70 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import providers from "../data/providers";
+import useProviders from "../hooks/useProviders";
 
 export default function ProviderDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { providers, loading } = useProviders();
 
   const [showBooking, setShowBooking] = useState(false);
   const provider = providers.find((p) => p.id === Number(id));
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 animate-pulse">
+        <div className="bg-primary-900">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+            <div className="h-4 bg-white/10 rounded w-28 mb-8" />
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+              <div className="w-40 h-40 rounded-2xl bg-white/10" />
+              <div className="flex-1 space-y-3 text-center sm:text-left">
+                <div className="h-7 bg-white/10 rounded-lg w-56 mx-auto sm:mx-0" />
+                <div className="h-5 bg-white/10 rounded-lg w-40 mx-auto sm:mx-0" />
+                <div className="h-11 bg-white/20 rounded-xl w-40 mt-5 mx-auto sm:mx-0" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-200/60 overflow-hidden">
+            <div className="px-8 pt-8 pb-6 space-y-3">
+              <div className="h-3 bg-gray-200 rounded w-16" />
+              <div className="h-4 bg-gray-100 rounded w-full" />
+              <div className="h-4 bg-gray-100 rounded w-5/6" />
+              <div className="h-4 bg-gray-100 rounded w-2/3" />
+            </div>
+            <div className="mx-8 border-t border-gray-100" />
+            <div className="px-8 py-6 space-y-3">
+              <div className="h-3 bg-gray-200 rounded w-20" />
+              <div className="flex gap-2">
+                <div className="h-8 bg-gray-100 rounded-lg w-20" />
+                <div className="h-8 bg-gray-100 rounded-lg w-24" />
+                <div className="h-8 bg-gray-100 rounded-lg w-16" />
+              </div>
+            </div>
+            <div className="mx-8 border-t border-gray-100" />
+            <div className="px-8 py-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <div className="h-3 bg-gray-200 rounded w-24" />
+                <div className="flex gap-2">
+                  <div className="h-8 bg-gray-100 rounded-lg w-24" />
+                  <div className="h-8 bg-gray-100 rounded-lg w-20" />
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div className="h-3 bg-gray-200 rounded w-24" />
+                <div className="flex gap-2">
+                  <div className="h-8 bg-gray-100 rounded-lg w-20" />
+                  <div className="h-8 bg-gray-100 rounded-lg w-28" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!provider) {
     return (
@@ -117,6 +174,17 @@ export default function ProviderDetail() {
                     <span key={m} className="px-3.5 py-1.5 rounded-lg text-sm font-medium bg-amber-50 text-amber-700 border border-amber-100">{m}</span>
                   ))}
                 </div>
+              </div>
+            </>
+          )}
+
+          {/* Ages */}
+          {provider.ageRange && (
+            <>
+              <div className="mx-8 border-t border-gray-100" />
+              <div className="px-8 py-6">
+                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Ages</h3>
+                <p className="text-[15px] text-gray-600">{provider.ageRange.min} – {provider.ageRange.max} years old</p>
               </div>
             </>
           )}

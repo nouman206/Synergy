@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
-import providers from "../data/providers";
+import useProviders from "../hooks/useProviders";
 import FilterChipBar from "../components/FilterChipBar";
 
 const INITIAL_FILTERS = {
@@ -15,6 +15,7 @@ const INITIAL_FILTERS = {
 export default function ProvidersPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { providers, loading } = useProviders();
   const [filters, setFilters] = useState(() => {
     const age = searchParams.get("age");
     const therapyType = searchParams.get("therapyType");
@@ -46,7 +47,7 @@ export default function ProvidersPage() {
       if (filters.modalities.length > 0 && !filters.modalities.some((m) => p.modalities?.includes(m))) return false;
       return true;
     });
-  }, [filters]);
+  }, [filters, providers]);
 
   const handleReset = () => setFilters(INITIAL_FILTERS);
 
@@ -77,15 +78,46 @@ export default function ProvidersPage() {
       </div>
 
       {/* ── Results ── */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
-        <span className="text-sm text-gray-500">
-          <span className="font-semibold text-gray-800">{filtered.length}</span> provider{filtered.length !== 1 ? "s" : ""} found
-        </span>
-      </div>
+      {!loading && (
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+          <span className="text-sm text-gray-500">
+            <span className="font-semibold text-gray-800">{filtered.length}</span> provider{filtered.length !== 1 ? "s" : ""} found
+          </span>
+        </div>
+      )}
 
       {/* ── Provider Cards ── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-12">
-        {filtered.length > 0 ? (
+        {loading ? (
+          <div className="space-y-5">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-sm border border-gray-200/60 overflow-hidden flex flex-col sm:flex-row animate-pulse">
+                <div className="sm:w-56 shrink-0 flex items-center justify-center p-6">
+                  <div className="w-36 h-36 rounded-2xl bg-gray-200" />
+                </div>
+                <div className="flex-1 flex flex-col">
+                  <div className="p-5 flex-1 space-y-3">
+                    <div className="h-5 bg-gray-200 rounded-lg w-48" />
+                    <div className="h-4 bg-gray-100 rounded-lg w-36" />
+                    <div className="flex gap-2 mt-3">
+                      <div className="h-6 bg-gray-100 rounded-lg w-20" />
+                      <div className="h-6 bg-gray-100 rounded-lg w-24" />
+                      <div className="h-6 bg-gray-100 rounded-lg w-16" />
+                    </div>
+                    <div className="space-y-2 mt-3">
+                      <div className="h-3.5 bg-gray-100 rounded w-full" />
+                      <div className="h-3.5 bg-gray-100 rounded w-3/4" />
+                    </div>
+                  </div>
+                  <div className="px-5 py-3 bg-gray-50 border-t border-gray-100 flex justify-between">
+                    <div className="h-3.5 bg-gray-200 rounded w-32" />
+                    <div className="h-3.5 bg-gray-200 rounded w-20" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : filtered.length > 0 ? (
           <div className="space-y-5">
             {filtered.map((p) => (
               <div
@@ -137,6 +169,12 @@ export default function ProvidersPage() {
                       <span>{p.languages.join(", ")}</span>
                       <span className="text-gray-200">|</span>
                       <span>{p.insurance.length} insurances</span>
+                      {p.ageRange && (
+                        <>
+                          <span className="text-gray-200">|</span>
+                          <span>Ages {p.ageRange.min}–{p.ageRange.max}</span>
+                        </>
+                      )}
                     </div>
                     <span className="text-sm font-bold text-primary-700 group-hover:text-primary-800 flex items-center gap-1 transition-colors">
                       View Profile
