@@ -31,11 +31,6 @@ export const INSURANCE_OPTIONS = [
 export const LANGUAGES = [
   "English",
   "Spanish",
-  "French",
-  "Mandarin",
-  "Portuguese",
-  "Korean",
-  "Arabic",
 ];
 
 export const GENDERS = ["Male", "Female", "Non-binary"];
@@ -47,26 +42,13 @@ export const THERAPY_TYPES = [
   "Couples/Marriage",
   "Family Therapy",
   "Psychological Testing",
+  "TMS",
+  "Medical Management",
 ];
 
 export const SESSION_TYPES = ["In-Person", "Telehealth"];
 
-export const MODALITIES = [
-  "CBT",
-  "DBT",
-  "EMDR",
-  "Psychodynamic",
-  "Person-Centered",
-  "Solution-Focused",
-  "Mindfulness-Based",
-  "Motivational Interviewing",
-  "Gottman Method",
-  "EFT",
-  "Narrative Therapy",
-  "Play Therapy",
-  "Art Therapy",
-  "ERP",
-];
+
 
 const providers = [
   {
@@ -180,7 +162,7 @@ const providers = [
   {
     id: 7,
     name: "Marcus Johnson, LMFT",
-    title: "Licensed Marriage & Family Therapist",
+    title: "Licensed Marriage & Family Provider",
     photo: "https://randomuser.me/api/portraits/men/46.jpg",
     specialties: ["Family Conflict", "Relationship Issues", "Stress Management"],
     insurance: ["Humana", "Cigna", "United Healthcare"],
@@ -288,7 +270,7 @@ const providers = [
   {
     id: 13,
     name: "Jordan Blake, LMFT",
-    title: "Licensed Marriage & Family Therapist",
+    title: "Licensed Marriage & Family Provider",
     photo: "https://randomuser.me/api/portraits/men/85.jpg",
     specialties: ["Relationship Issues", "Self-Esteem", "Stress Management"],
     insurance: ["Cigna", "United Healthcare", "Out of Pocket"],

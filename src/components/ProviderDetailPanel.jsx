@@ -62,9 +62,9 @@ export default function ProviderDetailPanel({ provider, distance, onClose }) {
           <p className="text-gray-600 text-sm leading-relaxed">{provider.bio}</p>
         </div>
 
-        {/* Specialties */}
+        {/* Concerns */}
         <div>
-          <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Specialties</h4>
+          <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Concerns</h4>
           <div className="flex flex-wrap gap-2">
             {provider.specialties.map((s) => (
               <span key={s} className="px-3 py-1 rounded-lg text-xs font-semibold bg-primary-50 text-primary-700 border border-primary-100">
@@ -94,17 +94,6 @@ export default function ProviderDetailPanel({ provider, distance, onClose }) {
           </div>
         </div>
 
-        {/* Modalities */}
-        {provider.modalities?.length > 0 && (
-          <div>
-            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Modalities</h4>
-            <div className="flex flex-wrap gap-2">
-              {provider.modalities.map((m) => (
-                <span key={m} className="px-3 py-1 rounded-lg text-xs font-medium bg-amber-50 text-amber-700 border border-amber-100">{m}</span>
-              ))}
-            </div>
-          </div>
-        )}
 
         {/* Insurance */}
         <div>

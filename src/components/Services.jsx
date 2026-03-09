@@ -35,6 +35,33 @@ const services = [
       </svg>
     ),
   },
+  {
+    title: "Medical Management",
+    description: "Medication evaluation and ongoing management by licensed professionals to support your treatment plan.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-1.47 4.409a2.25 2.25 0 01-2.134 1.541h-6.792a2.25 2.25 0 01-2.134-1.541L5 14.5m14 0H5" />
+      </svg>
+    ),
+  },
+  {
+    title: "Children's Play Therapy",
+    description: "A safe, playful environment where children can express emotions, build coping skills, and work through challenges.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+      </svg>
+    ),
+  },
+  {
+    title: "TMS",
+    description: "Transcranial Magnetic Stimulation — a non-invasive treatment for depression and other conditions using targeted magnetic pulses.",
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      </svg>
+    ),
+  },
 ];
 
 export default function Services() {

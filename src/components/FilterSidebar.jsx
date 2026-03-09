@@ -86,7 +86,7 @@ export default function FilterSidebar({
         </button>
       </div>
 
-      <FilterSection title="Specialty">
+      <FilterSection title="Concern">
         <CheckboxGroup
           options={SPECIALTIES}
           selected={filters.specialties}

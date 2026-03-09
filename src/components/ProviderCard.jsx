@@ -21,7 +21,7 @@ export default function ProviderCard({ provider }) {
       </div>
 
       <div className="px-5 pb-4 flex-1 space-y-3">
-        {/* Specialties */}
+        {/* Concerns */}
         <div className="flex flex-wrap gap-1.5">
           {provider.specialties.map((s) => (
             <span

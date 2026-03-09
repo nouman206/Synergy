@@ -129,9 +129,9 @@ export default function ProviderDetail() {
 
           <div className="mx-8 border-t border-gray-100" />
 
-          {/* Specialties */}
+          {/* Concerns */}
           <div className="px-8 py-6">
-            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Specialties</h3>
+            <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Concerns</h3>
             <div className="flex flex-wrap gap-2">
               {provider.specialties.map((s) => (
                 <span key={s} className="px-3.5 py-1.5 rounded-lg text-sm font-semibold bg-primary-50 text-primary-700 border border-primary-100">
@@ -162,21 +162,6 @@ export default function ProviderDetail() {
               </div>
             </div>
           </div>
-
-          {/* Modalities */}
-          {provider.modalities?.length > 0 && (
-            <>
-              <div className="mx-8 border-t border-gray-100" />
-              <div className="px-8 py-6">
-                <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Modalities</h3>
-                <div className="flex flex-wrap gap-2">
-                  {provider.modalities.map((m) => (
-                    <span key={m} className="px-3.5 py-1.5 rounded-lg text-sm font-medium bg-amber-50 text-amber-700 border border-amber-100">{m}</span>
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
 
           {/* Ages */}
           {provider.ageRange && (

@@ -4,7 +4,7 @@ import {
   LANGUAGES,
   THERAPY_TYPES,
   SESSION_TYPES,
-  MODALITIES,
+
 } from "../data/providers";
 
 /* ── Dropdown ── */
@@ -122,30 +122,26 @@ function FilterButton({ value, active, onClick }) {
 }
 
 /* ── Main ── */
-export default function FilterChipBar({ filters, setFilters, onReset, onSearch }) {
+export default function FilterChipBar({ filters, setFilters, onReset }) {
   const [openFilter, setOpenFilter] = useState(null);
   const toggle = useCallback((name) => setOpenFilter((p) => (p === name ? null : name)), []);
   const close = useCallback(() => setOpenFilter(null), []);
 
   const specialtyLabel = filters.specialties.length > 0
     ? filters.specialties.length === 1 ? filters.specialties[0] : `${filters.specialties.length} selected`
-    : "All Specialties";
+    : "All Concerns";
   const therapyLabel = filters.therapyType || "All Types";
-  const sessionLabel = filters.sessionType || "Any Format";
+  const sessionLabel = filters.sessionType || "In Clinic/Telehealth";
   const langLabel = filters.languages.length > 0
     ? filters.languages.length === 1 ? filters.languages[0] : `${filters.languages.length} selected`
     : "Any Language";
-  const modalityLabel = filters.modalities.length > 0
-    ? filters.modalities.length === 1 ? filters.modalities[0] : `${filters.modalities.length} selected`
-    : "All Modalities";
-
   const hasActiveFilters =
     filters.age || filters.therapyType || filters.specialties.length > 0 ||
-    filters.sessionType || filters.languages.length > 0 || filters.modalities.length > 0;
+    filters.sessionType || filters.languages.length > 0;
 
   return (
     <div className="space-y-3">
-      <div className={`grid grid-cols-2 sm:grid-cols-3 ${onSearch ? "lg:grid-cols-7" : "lg:grid-cols-6"} gap-3`}>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {/* Age */}
         <div className={`
           h-[46px] flex items-center gap-2 px-4 rounded-xl transition-all duration-200
@@ -180,10 +176,10 @@ export default function FilterChipBar({ filters, setFilters, onReset, onSearch }
           </Dropdown>
         </div>
 
-        {/* Specialties */}
+        {/* Concerns */}
         <div className="relative">
           <FilterButton value={specialtyLabel} active={filters.specialties.length > 0} onClick={() => toggle("specialties")} />
-          <Dropdown open={openFilter === "specialties"} onClose={close} title="Specialties">
+          <Dropdown open={openFilter === "specialties"} onClose={close} title="Concerns">
             <CheckList options={SPECIALTIES} selected={filters.specialties} onChange={(v) => setFilters((f) => ({ ...f, specialties: v }))} />
           </Dropdown>
         </div>
@@ -193,9 +189,9 @@ export default function FilterChipBar({ filters, setFilters, onReset, onSearch }
           <FilterButton value={sessionLabel} active={!!filters.sessionType} onClick={() => toggle("sessionType")} />
           <Dropdown open={openFilter === "sessionType"} onClose={close} title="Session Type">
             <RadioList
-              options={["Any Format", ...SESSION_TYPES]}
-              value={filters.sessionType || "Any Format"}
-              onChange={(v) => { setFilters((f) => ({ ...f, sessionType: v === "Any Format" ? "" : v })); close(); }}
+              options={["In Clinic/Telehealth", ...SESSION_TYPES]}
+              value={filters.sessionType || "In Clinic/Telehealth"}
+              onChange={(v) => { setFilters((f) => ({ ...f, sessionType: v === "In Clinic/Telehealth" ? "" : v })); close(); }}
             />
           </Dropdown>
         </div>
@@ -208,26 +204,8 @@ export default function FilterChipBar({ filters, setFilters, onReset, onSearch }
           </Dropdown>
         </div>
 
-        {/* Modalities */}
-        <div className="relative">
-          <FilterButton value={modalityLabel} active={filters.modalities.length > 0} onClick={() => toggle("modalities")} />
-          <Dropdown open={openFilter === "modalities"} onClose={close} title="Modalities">
-            <CheckList options={MODALITIES} selected={filters.modalities} onChange={(v) => setFilters((f) => ({ ...f, modalities: v }))} />
-          </Dropdown>
-        </div>
 
-        {/* Search button */}
-        {onSearch && (
-          <button
-            onClick={onSearch}
-            className="h-[46px] flex items-center justify-center gap-2 bg-accent text-white font-semibold rounded-xl hover:bg-accent/90 transition-colors cursor-pointer text-sm"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
-            Find
-          </button>
-        )}
+
       </div>
 
       {hasActiveFilters && (

@@ -9,7 +9,6 @@ const INITIAL_FILTERS = {
   specialties: [],
   sessionType: "",
   languages: [],
-  modalities: [],
 };
 
 export default function ProvidersPage() {
@@ -22,7 +21,6 @@ export default function ProvidersPage() {
     const specialties = searchParams.get("specialties");
     const sessionType = searchParams.get("sessionType");
     const languages = searchParams.get("languages");
-    const modalities = searchParams.get("modalities");
     return {
       ...INITIAL_FILTERS,
       age: age ? Number(age) : "",
@@ -30,7 +28,6 @@ export default function ProvidersPage() {
       specialties: specialties ? specialties.split(",") : [],
       sessionType: sessionType || "",
       languages: languages ? languages.split(",") : [],
-      modalities: modalities ? modalities.split(",") : [],
     };
   });
 
@@ -44,7 +41,7 @@ export default function ProvidersPage() {
       if (filters.specialties.length > 0 && !filters.specialties.some((s) => p.specialties.includes(s))) return false;
       if (filters.sessionType && !p.sessionTypes?.includes(filters.sessionType)) return false;
       if (filters.languages.length > 0 && !filters.languages.some((l) => p.languages.includes(l))) return false;
-      if (filters.modalities.length > 0 && !filters.modalities.some((m) => p.modalities?.includes(m))) return false;
+
       return true;
     });
   }, [filters, providers]);
@@ -140,7 +137,7 @@ export default function ProvidersPage() {
                     <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-800 transition-colors">{p.name}</h3>
                     <p className="text-sm text-primary-600 font-medium">{p.title}</p>
 
-                    {/* Specialties */}
+                    {/* Concerns */}
                     <div className="flex flex-wrap gap-1.5 mt-3">
                       {p.specialties.map((s) => (
                         <span key={s} className="text-[11px] px-2.5 py-1 rounded-lg bg-primary-50 text-primary-700 font-semibold border border-primary-100">
