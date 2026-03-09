@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex flex-col items-center text-center">
           <Link to="/" className="mb-4">
-            <img src="/logo-white.svg" alt="Synergy" className="h-10 w-auto" />
+            <img src="/logo-white.svg" alt="MindBridge" className="h-10 w-auto" />
           </Link>
           <p className="text-primary-200 text-sm leading-relaxed max-w-md">
             Connecting you with trusted mental health professionals. Your
@@ -15,7 +15,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-primary-800 mt-10 pt-6 text-center text-primary-400 text-xs">
-          &copy; {new Date().getFullYear()} Synergy. All rights reserved.
+          &copy; {new Date().getFullYear()} MindBridge. All rights reserved.
         </div>
       </div>
     </footer>

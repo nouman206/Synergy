@@ -14,7 +14,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
         <Link to="/" className="flex items-center">
-          <img src="/logo.svg" alt="Synergy" className="h-9 w-auto" />
+          <img src="/logo.svg" alt="MindBridge" className="h-9 w-auto" />
         </Link>
 
         {/* Desktop links */}
