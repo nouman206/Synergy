@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: "", phone: "" });
+  const [form, setForm] = useState({ name: "", email: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
   async function handleSubmit(e) {
@@ -19,7 +19,7 @@ export default function ContactForm() {
         }
       );
       setStatus("success");
-      setForm({ name: "", phone: "" });
+      setForm({ name: "", email: "" });
     } catch {
       setStatus("error");
     }
@@ -53,16 +53,16 @@ export default function ContactForm() {
             </div>
 
             <div>
-              <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1">
-                Phone
+              <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email
               </label>
               <input
-                id="contact-phone"
-                type="tel"
+                id="contact-email"
+                type="email"
                 required
-                value={form.phone}
-                onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                placeholder="(555) 123-4567"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="you@example.com"
                 className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
               />
             </div>
