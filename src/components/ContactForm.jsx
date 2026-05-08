@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
   async function handleSubmit(e) {
@@ -10,7 +10,8 @@ export default function ContactForm() {
 
     try {
       await fetch(
-        "https://script.google.com/macros/s/AKfycbzzEYcGRYma67tC8TMONISY-PHwP3JQPfiK_4YMzlnrSwAsBnQc_Ak29L0alMqpsXFN/exec",
+        // "https://script.google.com/macros/s/AKfycbzzEYcGRYma67tC8TMONISY-PHwP3JQPfiK_4YMzlnrSwAsBnQc_Ak29L0alMqpsXFN/exec",
+        "https://script.google.com/macros/s/AKfycbxH79eoVOrpnsb3hOLR9pKVDaaCT8xNfH5QQLaDcXS6iODwzZXLXQWfIu1DxYtWUjFY/exec",
         {
           method: "POST",
           mode: "no-cors",
@@ -19,7 +20,7 @@ export default function ContactForm() {
         }
       );
       setStatus("success");
-      setForm({ name: "", email: "" });
+      setForm({ name: "", email: "", message: "" });
     } catch {
       setStatus("error");
     }
@@ -64,6 +65,20 @@ export default function ContactForm() {
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 placeholder="you@example.com"
                 className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">
+                Message
+              </label>
+              <textarea
+                id="contact-message"
+                rows={4}
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                placeholder="How can we help you?"
+                className="w-full rounded-xl border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-colors resize-none"
               />
             </div>
 

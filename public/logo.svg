@@ -1,9 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 48" fill="none">
-  <!-- Two overlapping circles representing connection/synergy -->
-  <circle cx="18" cy="24" r="14" stroke="#1a3a6e" stroke-width="3" fill="none" opacity="0.7"/>
-  <circle cx="30" cy="24" r="14" stroke="#1a3a6e" stroke-width="3" fill="none" opacity="0.7"/>
-  <!-- Overlapping leaf/heart shape in center -->
-  <path d="M24 14 C20 18, 16 22, 24 30 C32 22, 28 18, 24 14Z" fill="#1a3a6e" opacity="0.9"/>
-  <!-- Text -->
-  <text x="52" y="32" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" fill="#0b1f3e" letter-spacing="-0.5">MindBridge</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 48" fill="none">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3260a8"/>
+      <stop offset="100%" stop-color="#1a3a6e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5a7db8"/>
+      <stop offset="100%" stop-color="#8ba6d1"/>
+    </linearGradient>
+  </defs>
+  <!-- Modern rounded square icon -->
+  <rect x="2" y="2" width="44" height="44" rx="14" fill="url(#grad)"/>
+  <!-- Clean heart shape -->
+  <path d="M24 34 C18 28, 11 24, 11 19 C11 15, 14 13, 17.5 13 C20 13, 22.5 15, 24 17 C25.5 15, 28 13, 30.5 13 C34 13, 37 15, 37 19 C37 24, 30 28, 24 34Z" fill="white" opacity="0.95"/>
+  <!-- Subtle sparkle dots -->
+  <circle cx="38" cy="8" r="2.5" fill="url(#accent)" opacity="0.5"/>
+  <circle cx="42" cy="12" r="1.5" fill="url(#accent)" opacity="0.35"/>
+  <!-- Refined thin serif text -->
+  <text x="56" y="25" font-family="Cormorant Garamond, Georgia, serif" font-size="22" font-weight="600" font-style="italic" fill="#0b1f3e" letter-spacing="0.5">My Therapist</text>
+  <text x="56" y="43" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="500" fill="url(#accent)" letter-spacing="3.5">CARES</text>
 </svg>
